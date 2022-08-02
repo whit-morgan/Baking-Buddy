@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Let's bake!</h1>
+        <!-- <form action="/addRecipe" method="POST" id="recipeForm">
+            <input type="text" placeholder="Recipe Name" name="recipeName">
+                <div id="ingredientsContainer">
+                    <select name="numberOfIngredients" id="numOfIngredients">
+                        <option value="">--Select Number of Ingredients--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
+            
+                    <div class="ingredientSection row">
+
+                        <div class="column">
+                            <div id="iInput" class="col1"></div>
+                        </div>
+
+                        <div class="column">
+                            <div id="amtInput" class="col2"></div>
+                        </div>
+
+                        <div class="column">
+                            <div id="measurement" class="col3"></div>
+                        </div>
+
+                    </div>
+           
+            <button id="submitForm" type="submit">Submit Recipe</button>
+        </form> -->
+        
+    <section>
+        <h3>Saved Recipes</h3>
+        <ul>
+            <% for(let i=0; i < info.length; i++) {%>
+                <li>
+                    
+                    <span><%= info[i].recipeName %></span>
+                    
+                    <span class = 'fa fa-chevron-circle-down'></span>                    
+                </li>
+            <% } %>
+        </ul>
+    </section>
+
+    <h3>Recipe Details</h3>
+    <section class = 'recipeSection'>
+        
+    </section>
+
+   
+<!--------------------------------------------------------------->
+
+
+<!-- ----------------------------------------------- -->
+
+<div id="popupContainer">
+    <div id="popupSubmitRecipe">
+        
+            <img id="close" src="/img/x-icon.jpg" onclick ="div_hide()"><span>
+                <form action="/addRecipe" method="POST" id="recipeForm">
+                    <input type="text" placeholder="Recipe Name" name="recipeName" id="recipeNameField">
+                        <div id="ingredientsContainer">
+                            <select name="numberOfIngredients" id="numOfIngredients">
+                                <option value="">--Select Number of Ingredients--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+                    
+                            <div class="ingredientSection row">
+        
+                                <div class="column">
+                                    <div id="iInput" class="col1"></div>
+                                </div>
+        
+                                <div class="column">
+                                    <div id="amtInput" class="col2"></div>
+                                </div>
+        
+                                <div class="column">
+                                    <div id="measurement" class="col3"></div>
+                                </div>
+        
+                            </div>
+                            <textarea type="text" placeholder="instructions"></textarea>
+                    <button id="submitForm" type="submit">Save Recipe</button>
+                </form>
+
+
+
+
+           
+    </div>
+</div>
+<button id="popup" onclick="div_show()">Popup</button>
+
+
+<!------------------------------------------------------------------------------------->
+<script src="js/main.js"></script>
+</body>
+</html>
