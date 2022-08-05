@@ -1,4 +1,5 @@
-// document.querySelector('#addIngredient').addEventListener('click', addNewIngredient)
+
+///////////Add New Ingredient////////////
 document.querySelector('#numOfIngredients').addEventListener('change', addNewIngredient)
 
 function addNewIngredient(){
@@ -102,6 +103,9 @@ async function showFullRecipe(){
                     recipeArea.appendChild(li)
                 }
 
+                const p = document.createElement('p')
+                p.textContent = `${obj.instructions}`
+                recipeArea.appendChild(p)
                 // const li = document.createElement('li')
                 // li.textContent = `${obj.ingredient}`
                 // recipeArea.appendChild(li)
@@ -131,11 +135,52 @@ async function showFullRecipe(){
 //     }
 //     }
     //Function To Display Popup
-    function div_show() {
+    function divShowAdd() {
     document.querySelector('#popupContainer').style.display = "flex";
     }
     //Function to Hide Popup
     function div_hide(){
     document.querySelector('#popupContainer').style.display = "none";
+    document.querySelector('#popupContainerDelete').style.display = "none";
     }
     
+
+///////////////Delete Recipe////////////
+const trashIcon = document.querySelectorAll('.fa-trash-alt')
+let oneToDelete 
+
+Array.from(trashIcon).forEach((element)=>{
+    element.addEventListener('click', divShowDelete)
+})
+
+function divShowDelete() {
+    console.log('trash can clicked')
+    document.querySelector('#popupContainerDelete').style.display = "flex";
+    oneToDelete = this.parentNode.childNodes[1].innerText
+    }
+
+
+document.querySelector('#deleteButton').addEventListener('click', deleteRecipe)
+
+async function deleteRecipe(){
+
+    try{
+        const response = await fetch('deleteRecipe', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'recipeName': oneToDelete
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+
+
+
+

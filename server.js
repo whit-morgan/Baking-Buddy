@@ -38,7 +38,7 @@ app.get('/api/:recipeName',(request, response)=>{
 })
 
 app.post('/addRecipe', (request, response) => {
-    db.collection('recipes').insertOne({recipeName: request.body.recipeName, ingredient: request.body.ingredient, ingredientAmount: request.body.ingredientAmount, ingredientMeasurement: request.body.measurement})
+    db.collection('recipes').insertOne({recipeName: request.body.recipeName, ingredient: request.body.ingredient, ingredientAmount: request.body.ingredientAmount, ingredientMeasurement: request.body.measurement, instructions: request.body.instructions})
     .then(result => {
         console.log('Recipe Added')
         response.redirect('/')
@@ -46,6 +46,14 @@ app.post('/addRecipe', (request, response) => {
     .catch(error => console.log(error))
 })
 
+app.delete('/deleteRecipe', (request, response) => {
+    db.collection('recipes').deleteOne({recipeName: request.body.recipeName})
+    .then(result => {
+        console.log('Recipe Deleted')
+        response.json('Recipe Deleted')
+    })
+    .catch(error => console.error(error))
+})
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server is running on port ${PORT}`)

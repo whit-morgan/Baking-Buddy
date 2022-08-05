@@ -59,17 +59,16 @@
                 <li>
                     
                     <span><%= info[i].recipeName %></span>
-                    
                     <span class = 'fa fa-chevron-circle-down'></span>                    
+                    <span class="fa fa-trash-alt"></span>
                 </li>
             <% } %>
         </ul>
     </section>
 
+    <!-------------Recipe Section--------------->
     <h3>Recipe Details</h3>
-    <section class = 'recipeSection'>
-        
-    </section>
+    <section class = 'recipeSection'></section>
 
    
 <!--------------------------------------------------------------->
@@ -82,6 +81,7 @@
         
             <img id="close" src="/img/x-icon.jpg" onclick ="div_hide()"><span>
                 <form action="/addRecipe" method="POST" id="recipeForm">
+                    
                     <input type="text" placeholder="Recipe Name" name="recipeName" id="recipeNameField">
                         <div id="ingredientsContainer">
                             <select name="numberOfIngredients" id="numOfIngredients">
@@ -119,7 +119,7 @@
                                 </div>
         
                             </div>
-                            <textarea type="text" placeholder="instructions"></textarea>
+                            <textarea type="text" placeholder="instructions" name="instructions"></textarea>
                     <button id="submitForm" type="submit">Save Recipe</button>
                 </form>
 
@@ -129,10 +129,44 @@
            
     </div>
 </div>
-<button id="popup" onclick="div_show()">Popup</button>
+<button id="popup" onclick="divShowAdd()">Popup</button>
 
 
-<!------------------------------------------------------------------------------------->
+<!-- --------------------Delete Recipe Popup---------------------------------------------->
+
+<div id="popupContainerDelete">
+
+    <div id="deletePopup">
+            <!-- <img id="close" src="/img/x-icon.jpg" onclick ="div_hide()"> -->
+            <h3>Delete this recipe?</h3>
+            <button id="deleteButton">Delete</button>
+            <button id="cancelDeleteButton" onclick ="div_hide()">Cancel</button>
+    </div>
+
+    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="js/main.js"></script>
 </body>
 </html>
