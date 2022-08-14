@@ -6,51 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
     <title>Document</title>
 </head>
 <body>
     <h1>Let's bake!</h1>
-        <!-- <form action="/addRecipe" method="POST" id="recipeForm">
-            <input type="text" placeholder="Recipe Name" name="recipeName">
-                <div id="ingredientsContainer">
-                    <select name="numberOfIngredients" id="numOfIngredients">
-                        <option value="">--Select Number of Ingredients--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                    </select>
-                </div>
-            
-                    <div class="ingredientSection row">
-
-                        <div class="column">
-                            <div id="iInput" class="col1"></div>
-                        </div>
-
-                        <div class="column">
-                            <div id="amtInput" class="col2"></div>
-                        </div>
-
-                        <div class="column">
-                            <div id="measurement" class="col3"></div>
-                        </div>
-
-                    </div>
-           
-            <button id="submitForm" type="submit">Submit Recipe</button>
-        </form> -->
         
     <section>
         <h3>Saved Recipes</h3>
@@ -66,12 +27,10 @@
         </ul>
     </section>
 
-    <!-------------Recipe Section--------------->
+<!-------------Recipe List Section--------------->
     <h3>Recipe Details</h3>
-    <section class = 'recipeSection'></section>
+    <section class = 'recipeSection'></section> 
 
-   
-<!--------------------------------------------------------------->
 
 
 <!-- ----------------------------------------------- -->
@@ -119,7 +78,7 @@
                                 </div>
         
                             </div>
-                            <textarea type="text" placeholder="instructions" name="instructions"></textarea>
+                            <textarea type="text" placeholder="Add your recipe instructions here" name="instructions" id="instructions"></textarea>
                     <button id="submitForm" type="submit">Save Recipe</button>
                 </form>
 
@@ -129,15 +88,14 @@
            
     </div>
 </div>
-<button id="popup" onclick="divShowAdd()">Popup</button>
+<button id="popup" onclick="divShowAdd()">Add New Recipe</button>
 
 
-<!-- --------------------Delete Recipe Popup---------------------------------------------->
+<!-- --------------------Delete Recipe Popup--------------------------->
 
 <div id="popupContainerDelete">
 
     <div id="deletePopup">
-            <!-- <img id="close" src="/img/x-icon.jpg" onclick ="div_hide()"> -->
             <h3>Delete this recipe?</h3>
             <button id="deleteButton">Delete</button>
             <button id="cancelDeleteButton" onclick ="div_hide()">Cancel</button>
@@ -145,21 +103,33 @@
 
     </div> 
 
+<!-- --------------------Measurement Converter--------------------------->
+<section id="measurementConvertSection">
+    <h2>Measurement Conversion</h2>
+    <select name="ingredientToConvert" id="ingredientToConvert">
+        <option value="">--Select Ingredient To Convert--</option>
+        <option value="allPurposeFlour">All Purpose Flour</option>
+        <option value="cakeFlour">Cake Flour</option>
+    </select>
 
+    <select name="convertFromUnit" id="convertFromUnit">
+        <option value="">Convert From</option>
+        <option value="cups">Cups</option>
+        <option value="grams">Grams</option>
+    </select>
 
+    <select name="convertToUnit" id="convertToUnit">
+        <option value="">Convert To</option>
+        <option value="cups">Cups</option>
+        <option value="grams">Grams</option>
+    </select>
 
+    <input type="number" placeholder="Amount" id="amountToConvert">
 
+    <span id="convertedUnitDisplay"></span>
 
-
-
-
-
-
-
-
-
-
-
+    <button id="convertUnitsButton">CONVERT</button>
+</section>
 
 
 
@@ -168,5 +138,18 @@
 
 
 <script src="js/main.js"></script>
+
+<!-----CK Editor script replacing the textarea in the ingredients form------>
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#instructions' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script>
+
 </body>
 </html>

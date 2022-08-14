@@ -1,4 +1,3 @@
-
 ///////////Add New Ingredient////////////
 document.querySelector('#numOfIngredients').addEventListener('change', addNewIngredient)
 
@@ -61,24 +60,17 @@ function addNewIngredient(){
 
 
 
-//////get more details on saved recipes
+//////GET MORE DETAILS ON SAVED RECIPES//////
 const moreArrow = document.querySelectorAll('.fa-chevron-circle-down')
 
 
-// document.querySelectorAll('.fa-chevron-circle-down').addEventListener('click', buttonTest)
-// function buttonTest(){
-//     console.log('button clicked')
-// }
 Array.from(moreArrow).forEach((element)=>{
     element.addEventListener('click', showFullRecipe)
 })
 
-// function showFullRecipe(){
-//     console.log('button clicked')
-// }
 
 
-///////show full recipe details//////
+///////SHOW FULL RECIPE DETAILS //////
 async function showFullRecipe(){
     const rName = this.parentNode.childNodes[1].innerText
     const recipeArea = document.querySelector('.recipeSection')
@@ -103,21 +95,12 @@ async function showFullRecipe(){
                     recipeArea.appendChild(li)
                 }
 
-                const p = document.createElement('p')
-                p.textContent = `${obj.instructions}`
-                recipeArea.appendChild(p)
-                // const li = document.createElement('li')
-                // li.textContent = `${obj.ingredient}`
-                // recipeArea.appendChild(li)
+                    const p = document.createElement('p')
+                    p.innerHTML = obj.instructions
+                    recipeArea.appendChild(p)
+
             }
         })
-
-        // data.forEach(obj => {
-        //     const li = document.createElement('li')
-        //     console.log(obj)
-        //     li.textContent = `${obj.ingredient}`
-        //     recipeArea.appendChild(li)
-        // })
     }catch(err){
         console.log(err)
     }
@@ -134,18 +117,18 @@ async function showFullRecipe(){
 //     alert("Form Submitted Successfully...");
 //     }
 //     }
-    //Function To Display Popup
+//////////DISPLAY POPUP////////
     function divShowAdd() {
     document.querySelector('#popupContainer').style.display = "flex";
     }
-    //Function to Hide Popup
+//////////HIDE POPUP/////////
     function div_hide(){
     document.querySelector('#popupContainer').style.display = "none";
     document.querySelector('#popupContainerDelete').style.display = "none";
     }
     
 
-///////////////Delete Recipe////////////
+///////////////DELETE RECIPE////////////
 const trashIcon = document.querySelectorAll('.fa-trash-alt')
 let oneToDelete 
 
@@ -180,7 +163,35 @@ async function deleteRecipe(){
     }
 }
 
+///////////////Unit Converter///////////////
+document.querySelector('#convertUnitsButton').addEventListener('click', convertUnit)
+const showConvertedUnit = document.querySelector('#convertedUnitDisplay')
+
+const convertAllPurposeFlour = {
+    cupsToGrams(amountToConvert){
+        console.log(amountToConvert * 125)
+    },
+    gramsToCups(amountToConvert){
+        showConvertedUnit.innerText = amountToConvert / 125
+    }
+}
+    
+function convertUnit() {
+    const selectedIngredient = document.querySelector('#ingredientToConvert').value
+    const convertFrom = document.querySelector('#convertFromUnit').value 
+    const convertTo = document.querySelector('#convertToUnit').value
+    const amountToConvert = document.querySelector('#amountToConvert').value
+
+    if(selectedIngredient === 'allPurposeFlour' && convertFrom === 'cups' && convertTo === 'grams')
+    convertAllPurposeFlour.cupsToGrams(amountToConvert)
+
+    if(selectedIngredient === 'allPurposeFlour' && convertFrom === 'grams' && convertTo === 'cups')
+    convertAllPurposeFlour.gramsToCups(amountToConvert)
+    
 
 
 
+
+    
+}
 
